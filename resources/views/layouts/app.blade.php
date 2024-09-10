@@ -21,13 +21,13 @@
         </main>
     </div> --}}
 
-    <div class="antialiased bg-gray-50 dark:bg-gray-900">
+    <div class="antialiased bg-gray-50 dark:bg-gray-900 h-full">
         <x-app.header/>
     
         <!-- Sidebar -->
         <x-app.sidebar/>
     
-        <main class="p-4 md:ml-64 h-auto pt-20">
+        <main class="p-4 md:ml-64 h-full pt-20">
             {{ $slot }}
             <x-app.footer />
         </main>
