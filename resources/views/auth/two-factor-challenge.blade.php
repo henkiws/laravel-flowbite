@@ -48,8 +48,7 @@
                         {{ __('Use an authentication code') }}
                     </button>
 
-                    <x-button class="ms-4">
-                        {{ __('Log in') }}
+                    <x-button btnClass="ms-4" :btnStyle="'dark'" :btnType="'submit'" btnName="{{ __('Log In') }}">
                     </x-button>
                 </div>
             </form>

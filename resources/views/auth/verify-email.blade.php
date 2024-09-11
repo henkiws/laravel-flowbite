@@ -19,8 +19,7 @@
                 @csrf
 
                 <div>
-                    <x-button type="submit">
-                        {{ __('Resend Verification Email') }}
+                    <x-button :btnStyle="'dark'" :btnType="'submit'" btnName="{{ __('Resend Verification Email') }}">
                     </x-button>
                 </div>
             </form>

@@ -19,8 +19,8 @@
                     </td>
                 @elseif( $el == "action" )
                     <td class="flex items-center px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+                        <x-button btnOpenModal="{{ $tableModalId }}" :btnType="'button'" :btnClass="'btn-edit'" :btnIcon="'edit'" :btnStyle="'light'" :btnAttrs="['data-id' => $row->id, 'data-action' => route($tableAction.'.show',[$row->id])]"> </x-button>
+                        <x-button btnOpenModal="{{ $tableModalId }}Confirmation" :btnType="'button'" :btnClass="'btn-delete-confirmation'" :btnIcon="'delete'" :btnStyle="'light'" :btnAttrs="['data-id' => $row->id, 'data-action' => route($tableAction.'.destroy',[$row->id])]"> </x-button>
                     </td>
                 @else
                     <td class="px-6 py-4">

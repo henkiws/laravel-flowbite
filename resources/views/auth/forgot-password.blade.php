@@ -25,8 +25,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
+                <x-button btnClass="ms-4" :btnStyle="'dark'" :btnType="'submit'" btnName="{{ __('Email Password Reset Link') }}">
                 </x-button>
             </div>
         </form>

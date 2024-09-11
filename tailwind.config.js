@@ -5,7 +5,7 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
-    "./node_modules/flowbite/**/*.js"
+    "./node_modules/flowbite/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {},

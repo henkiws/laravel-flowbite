@@ -28,6 +28,23 @@
         <x-app.sidebar/>
     
         <main class="p-4 md:ml-64 h-full pt-20">
+
+            @if(Session::has('success'))
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">Success Message!</span> {{ Session::get('success') }}
+            </div>
+            @endif
+            @if(Session::has('errors'))
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">Error Message!</span> {{ Session::get('errors')->first() }}
+            </div>
+            @endif
+            @if(Session::has('warning'))
+            <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-400" role="alert">
+                <span class="font-medium">Warning Message!</span> {{ Session::get('warning') }}
+            </div>
+            @endif
+
             {{ $slot }}
             <x-app.footer />
         </main>

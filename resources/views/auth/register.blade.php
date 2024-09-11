@@ -51,8 +51,7 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ms-4">
-                    {{ __('Register') }}
+                <x-button btnClass="ms-4" :btnStyle="'dark'" :btnType="'submit'" btnName="{{ __('Register') }}">
                 </x-button>
             </div>
         </form>
