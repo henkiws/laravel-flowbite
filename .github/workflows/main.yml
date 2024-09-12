@@ -43,3 +43,4 @@ jobs:
           git pull origin master
           php artisan migrate
           composer install
+          php artisan optimize:clear
