@@ -11,7 +11,7 @@ class TemplateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class TemplateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'description' => 'required',
+            'path' => 'required',
+            'active' => 'required',
+            'image' => 'required',
+            'original_price' => 'required',
+            'markup_price' => 'required',
+            'discount' => 'required',
+            'is_featured' => 'required',
+            'used_count' => 'required',
         ];
     }
 }

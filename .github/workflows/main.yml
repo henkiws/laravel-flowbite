@@ -41,4 +41,5 @@ jobs:
         script: |
           cd /var/www/hafidan.my.id
           git pull origin master
+          php artisan migrate
           composer install

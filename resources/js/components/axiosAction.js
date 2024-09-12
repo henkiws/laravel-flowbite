@@ -45,10 +45,6 @@ const AxiosAction = () => {
 
     const $targetEl = document.getElementById(modalTarget);
     OpenModal($targetEl)
-
-    console.log( id )
-    console.log( modalTarget )
-    console.log( urlAction )
   })
 
   function addInput(targetEl, inputName,inputValue) {
