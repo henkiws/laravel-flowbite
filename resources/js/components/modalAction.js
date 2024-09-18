@@ -21,6 +21,12 @@ import { Modal } from 'flowbite';
         
     })
 
+    $(document).on('click','.btn-href',function(e){
+      e.preventDefault()
+
+      window.location = $(this).attr('data-action')
+    })
+
     $(document).on('click','.close-modal',function() {
       var id = $(this).attr('data-modal-hide')
       const $targetEl = document.getElementById(id);

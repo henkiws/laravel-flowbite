@@ -8,12 +8,15 @@ use App\Http\Controllers\Users\PermissionController;
 use App\Http\Controllers\Master\BankController;
 use App\Http\Controllers\Master\MusicController;
 use App\Http\Controllers\Master\TemplateController;
+use App\Http\Controllers\Events\EventController;
 
 Route::redirect('/', 'login');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::prefix('admin')->group(function () { 
         // dashboard
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        // events
+        Route::resource('/events', EventController::class);
         // users
         Route::resource('/users', UserController::class);
         Route::resource('/roles', RoleController::class);
