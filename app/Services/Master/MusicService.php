@@ -3,8 +3,11 @@
 namespace App\Services\Master;
 
 use App\Models\Music;
+use App\Traits\FileUploadTrait;
 
 class MusicService {
+    
+    use FileUploadTrait;
 
     public function paginate($paginate = 10)
     {   
@@ -20,14 +23,17 @@ class MusicService {
     public function create(
         string $name,
         string $description,
-        string $path,
+        $music,
         int $active
         ): Music
     {
+        // upload file
+        $file = $this->uploadFile($music, 'mp3');
+
         $result = Music::create([
             'name' => $name,
             'description' => $description,
-            'path' => $path,
+            'path' => $file['path']??'',
             'active' => $active,
             'created_by' => auth()->user()->id
         ]);
@@ -38,17 +44,27 @@ class MusicService {
         int $id,
         string $name,
         string $description,
-        string $path,
+        $music,
         int $active
         ): Music
     {
+        // upload file
+        if( isset($music) ) {
+            $file = $this->uploadFile($music, 'mp3');
+        }
+
         $result = Music::where('id',$id)->first();
-        $result->update([
+        $data = [
             'name' => $name,
             'description' => $description,
-            'path' => $path,
             'active' => $active,
-        ]);
+        ];
+
+        if( isset($file['path']) ) {
+            $data['path'] = $file['path'];
+        }
+
+        $result->update($data);
         return $result;
     }
 

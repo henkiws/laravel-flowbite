@@ -11,7 +11,7 @@
             <x-button :btnType="'button'" :btnClass="'btn-add-new'" :btnOpenModal="'modalMusic'" :btnName="'Add New Music'" :btnIcon="'add'" :btnStyle="'dark'" :btnAttrs="['data-action' => route('musics.store')]"> </x-button>
         </div>
 
-        <x-table :tableHeader="[ 'No', 'Music Name', 'Description', 'Image', 'Active', 'Date Creation', 'Action' ]" :tableData="$musics" :tableElement="['no','name','description','image','active','created_at','action']" :tableAction="'musics'" tableModalId="modalMusic"></x-table>
+        <x-table :tableHeader="[ 'No', 'Music Name', 'Description', 'Mp3', 'Active', 'Date Creation', 'Action' ]" :tableData="$musics" :tableElement="['no','name','description','path','active','created_at','action']" :tableAction="'musics'" tableModalId="modalMusic"></x-table>
 
     </div>
 
@@ -26,8 +26,8 @@
                             <textarea name="description" id="description" class="form-control w-full p-2.5" rows="3" placeholder="Default Input"></textarea>
                         </div>
                         <div class="col-span-2">
-                            <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                            <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Image" required="">
+                            <label for="path" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                            <input type="file" name="path" id="path" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Image" required="">
                         </div>
                         <div class="col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Active</label>

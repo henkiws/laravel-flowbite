@@ -26,7 +26,7 @@ class TemplateRequest extends FormRequest
             'description' => 'required',
             'path' => 'required',
             'active' => 'required',
-            'image' => 'required',
+            'image' => 'required_without:id|max:10000|mimes:png,jpg,jpeg,webp',
             'original_price' => 'required',
             'markup_price' => 'required',
             'discount' => 'required',

@@ -24,7 +24,7 @@ class BankRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required_without:id|max:10000|mimes:png,jpg,jpeg,webp',
             'name' => 'required',
         ];
     }

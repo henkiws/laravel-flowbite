@@ -41,7 +41,7 @@ class BankController extends Controller
             $result = $this->bankService->create(
                             $request->name,
                             $request->description,
-                            $request->image,
+                            $request->file('image'),
                             $request->active
                         );
     
@@ -57,7 +57,7 @@ class BankController extends Controller
                             $id,
                             $request->name,
                             $request->description,
-                            $request->image,
+                            $request->file('image'),
                             $request->active
                         );
     

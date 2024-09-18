@@ -3,8 +3,11 @@
 namespace App\Services\Master;
 
 use App\Models\Template;
+use App\Traits\FileUploadTrait;
 
 class TemplateService {
+
+    use FileUploadTrait;
 
     public function paginate($paginate = 10)
     {   
@@ -23,7 +26,7 @@ class TemplateService {
         string $name,
         string $description,
         string $path,
-        string $image,
+        $image,
         float $original_price,
         float $markup_price,
         float $discount,
@@ -31,11 +34,14 @@ class TemplateService {
         int $active,
         ): Template
     {
+        // upload file
+        $file = $this->uploadFile($image, 'templates');
+
         $result = Template::create([
             'name' => $name,
             'description' => $description,
             'path' => $path,
-            'image' => $image,
+            'image' => $file['path']??'',
             'original_price' => $original_price,
             'markup_price' => $markup_price,
             'discount' => $discount,
@@ -52,7 +58,7 @@ class TemplateService {
         string $name,
         string $description,
         string $path,
-        string $image,
+        $image,
         float $original_price,
         float $markup_price,
         float $discount,
@@ -60,8 +66,13 @@ class TemplateService {
         int $active,
         ): Template
     {
+        // upload file
+        if( isset($image) ) {
+            $file = $this->uploadFile($image, 'templates');
+        }
+
         $result = Template::where('id',$id)->first();
-        $result->update([
+        $data = [
             'name' => $name,
             'description' => $description,
             'path' => $path,
@@ -72,7 +83,13 @@ class TemplateService {
             'is_featured' => $is_featured,
             'used_count' => 0,
             'active' => $active,
-        ]);
+        ];
+
+        if( isset($file['path']) ) {
+            $data['image'] = $file['path'];
+        }
+
+        $result->update($data);
         return $result;
     }
 

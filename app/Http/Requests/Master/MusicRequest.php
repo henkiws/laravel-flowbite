@@ -24,7 +24,7 @@ class MusicRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'path' => 'required',
+            'path' => 'required_without:id|max:10000|mimes:mp3',
             'active' => 'required',
         ];
     }

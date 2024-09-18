@@ -3,8 +3,11 @@
 namespace App\Services\Master;
 
 use App\Models\Bank;
+use App\Traits\FileUploadTrait;
 
 class BankService {
+
+    use FileUploadTrait;
 
     public function paginate($paginate = 10)
     {   
@@ -20,14 +23,17 @@ class BankService {
     public function create(
         string $name,
         string $description,
-        file $image,
+        $image,
         int $active
         ): Bank
     {
+        // upload file
+        $file = $this->uploadFile($image, 'banks');
+
         $result = Bank::create([
             'name' => $name,
             'description' => $description,
-            'image' => $image,
+            'image' => $file['path']??'',
             'active' => $active,
             'created_by' => auth()->user()->id
         ]);
@@ -38,17 +44,27 @@ class BankService {
         int $id,
         string $name,
         string $description,
-        file $image,
+        $image,
         int $active
         ): Bank
     {
+        // upload file
+        if( isset($image) ) {
+            $file = $this->uploadFile($image, 'banks');
+        }
+
         $result = Bank::where('id',$id)->first();
-        $result->update([
+        $data = [
             'name' => $name,
             'description' => $description,
-            'image' => $image,
             'active' => $active,
-        ]);
+        ];
+
+        if( isset($file['path']) ) {
+            $data['image'] = $file['path'];
+        }
+
+        $result->update($data);
         return $result;
     }
 

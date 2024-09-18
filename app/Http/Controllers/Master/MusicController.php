@@ -41,7 +41,7 @@ class MusicController extends Controller
             $result = $this->musicService->create(
                             $request->name,
                             $request->description,
-                            $request->image,
+                            $request->file('path'),
                             $request->active
                         );
     
@@ -57,7 +57,7 @@ class MusicController extends Controller
                             $id,
                             $request->name,
                             $request->description,
-                            $request->image,
+                            $request->file('path'),
                             $request->active
                         );
     

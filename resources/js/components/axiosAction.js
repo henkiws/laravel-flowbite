@@ -17,8 +17,18 @@ const AxiosAction = () => {
             // add new field id
             addInput('#form'+modalTarget, 'id', id)
 
+            console.log( response.data.data )
+
             Object.keys(response.data.data).forEach(function(key) {
-              $(`input[name="${key}"]`).val(response.data.data[key])
+              if( key == "image" || key == "path" ) {
+                $(`input[name="${key}"]`).prop('required',false)
+              }else if( key == "description" ) {
+                $(`textarea[name="${key}"]`).val(response.data.data[key])
+              }else if( key == "active" ) {
+                $(`select[name="${key}"]`).val(response.data.data[key]).trigger('change')
+              }else{
+                $(`input[name="${key}"]`).val(response.data.data[key])
+              }
             });
 
             $(`#form${modalTarget}`).attr('action',urlAction)
