@@ -89,6 +89,14 @@ const AxiosAction = () => {
     const modal = new Modal($targetEl, options);
     modal.show();
   }
+
+  // step event
+  $(document).on('click','.step-event',function(){
+    var $id = $(this).attr('data-to')
+
+    $('.step-content').addClass('hidden')
+    $(`#${$id}`).removeClass('hidden')
+  })
   
 };
 

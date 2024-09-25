@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Music extends Model
+class Type extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $table = 'music';
-    protected $fillable = ['name','description','path','active','created_by'];
+    protected $table = 'event_group';
+    protected $fillable = ['name','description','image','active','created_by'];
 
     public function getSlugOptions() : SlugOptions
     {

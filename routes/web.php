@@ -8,6 +8,7 @@ use App\Http\Controllers\Users\PermissionController;
 use App\Http\Controllers\Master\BankController;
 use App\Http\Controllers\Master\MusicController;
 use App\Http\Controllers\Master\TemplateController;
+use App\Http\Controllers\Master\TypeController;
 use App\Http\Controllers\Events\EventController;
 
 Route::redirect('/', 'login');
@@ -25,6 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::resource('/banks', BankController::class);
         Route::resource('/musics', MusicController::class);
         Route::resource('/templates', TemplateController::class);
+        Route::resource('/types', TypeController::class);
         // fallback
         Route::fallback(function() {
             return view('pages/utility/404');
