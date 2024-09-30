@@ -6,12 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Events\EventRequest;
 use App\Services\Events\EventService;
+use App\Services\Master\TypeService;
+use App\Services\Master\TemplateService;
 use DB;
 
 class EventController extends Controller
 {
-    public function __construct(EventService $eventService) {
+    public function __construct(EventService $eventService,
+                                TypeService $typeService,
+                                TemplateService $templateService) {
         $this->eventService  = $eventService;
+        $this->typeService  = $typeService;
+        $this->templateService  = $templateService;
     }
 
     public function index() {
@@ -22,7 +28,10 @@ class EventController extends Controller
     }
 
     public function create() {
-        $data = [];
+        $data = [
+            "form_event_type" => $this->typeService->formList('event_type'),
+            "form_event_template" => $this->templateService->formList('event_template')
+        ];
         return view('pages/events/form',$data);
     }
 
