@@ -91,21 +91,21 @@ const AxiosAction = () => {
   }
 
   // step event
-  $(document).on('click','.step-event',function(){
-    var $id = $(this).attr('data-to')
+  // $(document).on('click','.step-event',function(){
+  //   var $id = $(this).attr('data-to')
 
-    var class_selected = "text-green-700 bg-green-100 border border-green-300 rounded-lg dark:bg-gray-800 dark:border-green-800 dark:text-green-400"
-    var class_default = "text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+  //   var class_selected = "text-green-700 bg-green-100 border border-green-300 rounded-lg dark:bg-gray-800 dark:border-green-800 dark:text-green-400"
+  //   var class_default = "text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
 
-    // $('.step-content').addClass('hidden')
-    // $(`#${$id}`).removeClass('hidden')
+  //   $('.step-content').addClass('hidden')
+  //   $(`#${$id}`).removeClass('hidden')
 
-    // $('.step-event').removeClass(class_default)
-    // $('.step-event').removeClass(class_selected)
+  //   $('.step-event').removeClass(class_default)
+  //   $('.step-event').removeClass(class_selected)
 
-    // $('.step-event').addClass(class_default)
-    // $(`[data-to="${$id}"]`).addClass(class_selected)
-  })
+  //   $('.step-event').addClass(class_default)
+  //   $(`[data-to="${$id}"]`).addClass(class_selected)
+  // })
 
   // box add new
   $(document).on('click','.box-add-new',function(){
@@ -171,6 +171,8 @@ const AxiosAction = () => {
     var $action = $(this).attr('data-action')
     var $form = $(this).attr('data-form')
 
+    submitForm($form)
+
     var class_selected = "text-green-700 bg-green-100 border border-green-300 rounded-lg dark:bg-gray-800 dark:border-green-800 dark:text-green-400"
     var class_default = "text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
 
@@ -191,6 +193,10 @@ const AxiosAction = () => {
       $(`[data-to="${$target}"]`).addClass(class_selected)
     }
   })
+
+  function submitForm($form) {
+    $(`#${$form}`).submit()
+  }
   
 };
 

@@ -101,14 +101,14 @@ class TemplateService {
         return 1;
     }
 
-    public function formList($name, $select2 = 0): string 
+    public function formList($name, $selected = 0): string 
     {
         $roles = Template::select('id','name')->get();
         $options = '';
         foreach( $roles as $key => $val ) {
-            $options .= '<option value="'.$val->name.'" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600">'.$val->name.'</option>';
+            $options .= '<option value="'.$val->id.'" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600" '.($selected == $val->id ? "selected" : "").'>'.$val->name.'</option>';
         }
-        $form = '<select name="'.$name.'" id="'.$name.'" class="form-control '.($select2?'select2':'').' bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">'.$options.'</select>';
+        $form = '<select name="'.$name.'" id="'.$name.'" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">'.$options.'</select>';
 
         return $form;
     }

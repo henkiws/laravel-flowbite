@@ -23,20 +23,28 @@ class EventService {
     }
 
     public function create(
+        string $title,
         string $name,
-        string $description,
-        $image,
-        int $active
+        string $initial_name,
+        int $fk_event_group,
+        int $fk_template,
+        int $fk_music,
+        string $quotes,
+        string $event_date,
+        int $show_prokes
         ): Event
     {
-        // upload file
-        $file = $this->uploadFile($image, 'banks');
-
         $result = Event::create([
+            'title' => $title,
             'name' => $name,
-            'description' => $description,
-            'image' => $file['path']??'',
-            'active' => $active,
+            'initial_name' => $initial_name,
+            'fk_event_group' => $fk_event_group,
+            'fk_template' => $fk_template,
+            'fk_music' => $fk_music,
+            'quotes' => $quotes,
+            'event_date' => $event_date,
+            'show_prokes' => $show_prokes??0,
+            'active' => 1, // default active
             'created_by' => auth()->user()->id
         ]);
         return $result;
@@ -44,22 +52,30 @@ class EventService {
 
     public function update(
         int $id,
+        string $title,
         string $name,
-        string $description,
-        $image,
-        int $active
+        string $initial_name,
+        int $fk_event_group,
+        int $fk_template,
+        int $fk_music,
+        string $quotes,
+        string $event_date,
+        int $show_prokes
         ): Event
     {
-        // upload file
-        if( isset($image) ) {
-            $file = $this->uploadFile($image, 'banks');
-        }
 
         $result = Event::where('id',$id)->first();
         $data = [
+            'title' => $title,
             'name' => $name,
-            'description' => $description,
-            'active' => $active,
+            'initial_name' => $initial_name,
+            'fk_event_group' => $fk_event_group,
+            'fk_template' => $fk_template,
+            'fk_music' => $fk_music,
+            'quotes' => $quotes,
+            'event_date' => $event_date,
+            'show_prokes' => $show_prokes??0,
+            'active' => 1, // default active
         ];
 
         if( isset($file['path']) ) {

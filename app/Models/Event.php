@@ -14,7 +14,7 @@ class Event extends Model
     protected $table = 'events';
     protected $fillable = ['name','slug','fk_event_group','fk_template','view_template','is_demo',
                 'quotes','event_date','active','created_by','fk_music','title','initial_name','show_prokes',
-                'event_expired','is_featured'];
+                'event_expired','is_featured','fk_order'];
 
     public function getSlugOptions() : SlugOptions
     {

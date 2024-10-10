@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Events\EventRequest;
 use App\Services\Events\EventService;
 use App\Services\Master\TypeService;
+use App\Services\Master\MusicService;
 use App\Services\Master\TemplateService;
 use DB;
 
@@ -14,9 +15,11 @@ class EventController extends Controller
 {
     public function __construct(EventService $eventService,
                                 TypeService $typeService,
+                                MusicService $musicService,
                                 TemplateService $templateService) {
         $this->eventService  = $eventService;
         $this->typeService  = $typeService;
+        $this->musicService  = $musicService;
         $this->templateService  = $templateService;
     }
 
@@ -29,8 +32,19 @@ class EventController extends Controller
 
     public function create() {
         $data = [
-            "form_event_type" => $this->typeService->formList('event_type'),
-            "form_event_template" => $this->templateService->formList('event_template')
+            "form_event_type" => $this->typeService->formList('fk_event_group'),
+            "form_event_template" => $this->templateService->formList('fk_template'),
+            "form_event_music" => $this->musicService->formList('fk_music'),
+        ];
+        return view('pages/events/form',$data);
+    }
+
+    public function edit($id) {
+        $data = [
+            "event" => $this->eventService->fetchById($id),
+            "form_event_type" => $this->typeService->formList('fk_event_group',1),
+            "form_event_template" => $this->templateService->formList('fk_template',1),
+            "form_event_music" => $this->musicService->formList('fk_music'),
         ];
         return view('pages/events/form',$data);
     }
@@ -53,13 +67,17 @@ class EventController extends Controller
     public function store(EventRequest $request) {
         try{
             $result = $this->eventService->create(
+                            $request->title,
                             $request->name,
-                            $request->description,
-                            $request->file('image'),
-                            $request->active
+                            $request->initial_name,
+                            $request->fk_event_group,
+                            $request->fk_template,
+                            $request->fk_music,
+                            $request->quotes,
+                            $request->event_date,
+                            $request->show_prokes??0                        
                         );
-    
-            return redirect()->route('events.index')->with('success','Event #' . $result->name . ' created successfully');
+            return redirect()->route('events.edit',[$result->id])->with('success','Event #' . $result->title . ' created successfully');
         }catch( \Exception $e) {
             return redirect()->route('events.index')->withErrors(['msg' => $e->getMessage()]);
         }
@@ -69,13 +87,18 @@ class EventController extends Controller
         try{
             $result = $this->eventService->update(
                             $id,
+                            $request->title,
                             $request->name,
-                            $request->description,
-                            $request->file('image'),
-                            $request->active
+                            $request->initial_name,
+                            $request->fk_event_group,
+                            $request->fk_template,
+                            $request->fk_music,
+                            $request->quotes,
+                            $request->event_date,
+                            $request->show_prokes??0                        
                         );
     
-            return redirect()->route('events.index')->with('success','Event #' . $result->name . ' updated successfully');
+            return redirect()->route('events.edit',[$result->id])->with('success','Event #' . $result->title . ' updated successfully');
         }catch( \Exception $e) {
             return redirect()->route('events.index')->withErrors(['msg' => $e->getMessage()]);
         }

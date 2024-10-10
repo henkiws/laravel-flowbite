@@ -87,33 +87,36 @@
             
             <div class="col-span-2 step-content" id="general_info">
                 <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                    <form id="form_general_info" action="#" method="POST">
+                    <form id="form_general_info" action="{{ isset($event->id) ? route('events.update',[$event->id]) : route('events.store') }}" method="POST">
                         @csrf
+                        @isset($event->id)
+                        @method('put')
+                        @endisset
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                                <input type="text" name="title" id="title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Title" required="">
+                                <input type="text" name="title" id="title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Title" required="" value="{{ !empty(old('title')) ? old('title') : (isset($event->title) ? $event->title : '' ) }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required="">
+                                <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required="" value="{{ !empty(old('name')) ? old('name') : (isset($event->name) ? $event->name : '' ) }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="initial_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Initial Name</label>
-                                <input type="text" name="initial_name" id="initial_name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. California" required="">
+                                <input type="text" name="initial_name" id="initial_name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. California" required="" value="{{ !empty(old('initial_name')) ? old('initial_name') : (isset($event->initial_name) ? $event->initial_name : '' ) }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="organization" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quotes</label>
-                                <textarea id="quotes" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event quotes here"></textarea>
+                                <textarea id="quotes" name="quotes" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event quotes here">{{ !empty(old('quotes')) ? old('quotes') : (isset($event->quotes) ? $event->quotes : '' ) }}</textarea>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="event_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event Date</label>
-                                <input type="date" name="event_date" id="event_date" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="event_date" required="">
+                                <input type="date" name="event_date" id="event_date" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="event_date" required="" value="{{ !empty(old('event_date')) ? old('event_date') : (isset($event->event_date) ? \Carbon\Carbon::parse($event->event_date)->format('Y-m-d') : '' ) }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Show Prokes</label>
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" value="1" name="show_prokes" class="sr-only peer">
+                                    <input type="checkbox" value="1" name="show_prokes" class="sr-only peer" {{ !empty(old('show_prokes')) ? (old('show_prokes') == 1 ? "checked" : "") : (isset($event->show_prokes) ? ($event->show_prokes == 1 ? "checked" : "") : '' ) }}>
                                     <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                 </label>
                             </div>
@@ -124,6 +127,10 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Theme</label>
                                 {!! $form_event_template !!}
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Background Music</label>
+                                {!! $form_event_music !!}
                             </div>
                             <div class="col-span-6 sm:col-full text-right">
                                 <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Next'" :btnIcon="'next'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'cover_image', 'data-action' => 'next', 'data-form' => 'form_general_info']"> </x-button>

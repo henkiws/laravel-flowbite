@@ -18,6 +18,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // events
         Route::resource('/events', EventController::class);
+        Route::prefix('events')->group(function () { 
+            Route::resource('/couple', EventController::class);
+            Route::resource('/gallery', EventController::class);
+            Route::resource('/gifts', EventController::class);
+            Route::resource('/invites', EventController::class);
+            Route::resource('/location', EventController::class);
+            Route::resource('/lovestory', EventController::class);
+        });
+    
         // users
         Route::resource('/users', UserController::class);
         Route::resource('/roles', RoleController::class);
