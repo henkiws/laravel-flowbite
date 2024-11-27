@@ -7,11 +7,16 @@
 
     <div class="w-full p-4 bg-white border border-gray-100 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
 
+        @php
+            $class_active = "text-green-700 bg-green-100 border border-green-300 rounded-lg dark:bg-gray-800 dark:border-green-800 dark:text-green-400";
+            $class_inactive = "text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400";
+        @endphp
+
         <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <div class="bg-white dark:bg-gray-800"> 
                 <ol class="space-y-4">
                     <li>
-                        <div class="w-full p-4 step-event text-green-700 bg-green-100 border border-green-300 rounded-lg dark:bg-gray-800 dark:border-green-800 dark:text-green-400" role="alert" data-to="general_info">
+                        <div class="w-full p-4 step-event {{ in_array('general_info',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="general_info">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">General info</span>
                                 <h3 class="font-medium">General Info</h3>
@@ -19,7 +24,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="cover_image">
+                        <div class="w-full p-4 step-event {{ in_array('cover_image',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="cover_image">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Cover Image</span>
                                 <h3 class="font-medium">Cover Image</h3>
@@ -27,7 +32,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="groom_bride">
+                        <div class="w-full p-4 step-event {{ in_array('groom_bride',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="groom_bride">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Groom & Bride</span>
                                 <h3 class="font-medium">Groom & Bride</h3>
@@ -35,7 +40,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="events">
+                        <div class="w-full p-4 step-event {{ in_array('events',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="events">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Events</span>
                                 <h3 class="font-medium">Events</h3>
@@ -43,7 +48,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="gallery">
+                        <div class="w-full p-4 step-event {{ in_array('gallery',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="gallery">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Gallery</span>
                                 <h3 class="font-medium">Gallery</h3>
@@ -51,7 +56,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="love_story">
+                        <div class="w-full p-4 step-event {{ in_array('love_story',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="love_story">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Love Story</span>
                                 <h3 class="font-medium">Love Story</h3>
@@ -59,7 +64,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="gifts">
+                        <div class="w-full p-4 step-event {{ in_array('gifts',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="gifts">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Gifts</span>
                                 <h3 class="font-medium">Gifts</h3>
@@ -67,7 +72,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="invites">
+                        <div class="w-full p-4 step-event {{ in_array('invites',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="invites">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Invites</span>
                                 <h3 class="font-medium">Invites</h3>
@@ -75,7 +80,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 step-event text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" role="alert" data-to="confirmation">
+                        <div class="w-full p-4 step-event {{ in_array('confirmation',$tab_active) ? $class_active : $class_inactive }}" role="alert" data-to="confirmation">
                             <div class="flex items-center justify-between">
                                 <span class="sr-only">Confirmation</span>
                                 <h3 class="font-medium">Confirmation</h3>
@@ -85,7 +90,8 @@
                 </ol>
             </div>
             
-            <div class="col-span-2 step-content" id="general_info">
+            @if( $content_active == 'general_info' )
+            <div class="col-span-2 step-content {{ $content_active == 'general_info' ? '' : 'hidden' }}" id="general_info">
                 <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                     <form id="form_general_info" action="{{ isset($event->id) ? route('events.update',[$event->id]) : route('events.store') }}" method="POST">
                         @csrf
@@ -139,15 +145,38 @@
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="cover_image">
+            @if( $content_active == 'cover_image' )
+            <div class="col-span-2 step-content {{ $content_active == 'cover_image' ? '' : 'hidden' }}" id="cover_image">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
-                    <form action="#" method="POST" id="form_cover_image">
+                    <form action="{{ isset($event->id) ? route('gallery.update',[$event->id]) : '' }}" method="POST" enctype="multipart/form-data" id="form_cover_image">
                         @csrf
+                        @method('put')
                         <div class="grid grid-cols-4 xl:grid-cols-4 xl:gap-1 dark:bg-gray-900 cover-image">
+                            @foreach( $event_cover as $key => $val )
+                            <div class="col-span-1">
+                                <div class="relative items-center justify-center w-full">
+                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="pt-5 pb-6">
+                                            <img class="w-full h-52" src="{{ asset($val->path) }}">
+                                        </div>
+                                    </label>
+                                    <div class="absolute flex top-0 right-0 py-3 h-20 w-20">
+                                        <button type="button" class="w-9 h-9 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100  focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 dark:bg-gray-800">
+                                            <svg class="w-7 h-7 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div> 
+                            </div>
+                            @endforeach
+
+                            @if( count($event_cover) < 3 )
                             <div class="col-span-1">
                                 <div class="flex items-center justify-center w-full">
-                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 box-add-new" data-target="cover_image_file[]" data-prepend="cover-image">
+                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 box-add-new" data-target="cover_image_file" data-prepend="cover-image" data-form="form_cover_image">
                                         <div class="flex flex-col items-center justify-center pt-6 pb-6">
                                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -155,64 +184,73 @@
                                             <p class="text-sm text-gray-500 dark:text-gray-400">Choose Files</p>
                                         </div>
                                     </label>
-                                    <input type="file" name="cover_image_file[]" multiple class="hidden" accept="image/*">
+                                    <input type="file" name="cover_image_file" multiple class="hidden" accept="image/*">
                                 </div> 
                             </div>
-                            <div class="col-span-6 sm:col-full text-right">
-                                <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Back'" :btnIcon="'back'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'general_info', 'data-action' => 'back', 'data-form' => 'form_cover_image']"> </x-button>
-                                <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Next'" :btnIcon="'next'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'groom_bride', 'data-action' => 'next', 'data-form' => 'form_cover_image']"> </x-button>
-                            </div>
+                            @endif
+                        </div>
+                        <div class="col-span-6 sm:col-full mt-3 text-right">
+                            <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Back'" :btnIcon="'back'" :btnStyle="'light'" :btnAttrs="['data-target' => isset($event->id) ? route('events.edit',[$event->id]) : '', 'data-action' => 'href', 'data-form' => 'form_cover_image']"> </x-button>
+                            <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Next'" :btnIcon="'next'" :btnStyle="'dark'" :btnAttrs="['data-target' => isset($event->id) ? route('couple.edit',[$event->id]) : '', 'data-action' => 'href', 'data-form' => 'form_cover_image']"> </x-button>
                         </div>
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="groom_bride">
+            @if( $content_active == 'groom_bride' )
+            <div class="col-span-2 step-content {{ $content_active == 'groom_bride' ? '' : 'hidden' }}" id="groom_bride">
                 <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                    <form action="#" id="form_groom_bride">
+                    <form action="{{ isset($event->id) ? route('couple.update',[$event->id]) : '' }}" id="form_groom_bride" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
+
+                        <input type="hidden" name="groom_id" value="{{ isset($groom->id) ? $groom->id : '' }}">
+                        <input type="hidden" name="bride_id" value="{{ isset($bride->id) ? $bride->id : '' }}">
+
                         <h5 class="text-xl font-bold dark:text-white">Groom</h5>
                         <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_fullname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fullname</label>
-                                <input type="text" name="groom_fullname" id="groom_fullname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Title" required="">
+                                <input type="text" name="groom_fullname" id="groom_fullname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Title" required="" value="{{ isset($groom->name) ? $groom->name : old('groom_fullname') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_nickname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nickname</label>
-                                <input type="text" name="groom_nickname" id="groom_nickname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required="">
+                                <input type="text" name="groom_nickname" id="groom_nickname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required="" value="{{ isset($groom->nickname) ? $groom->nickname : old('groom_nickname') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_photo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo</label>
                                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="groom_photo" type="file">
+                                {!! isset($groom->photo) ? '<img src="'.asset($groom->photo).'" class="h-52">' : '' !!}
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                <textarea name="groom_address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event quotes here"></textarea>
+                                <textarea name="groom_address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event quotes here">{{ ($groom->address) ? $groom->address : old('groom_address') }}</textarea>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_child" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Child</label>
-                                <input type="text" name="groom_child" id="groom_child" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="groom_child" id="groom_child" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($groom->child) ? $groom->child : old('groom_child') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_father" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father Name</label>
-                                <input type="text" name="groom_father" id="groom_father" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="groom_father" id="groom_father" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($groom->father) ? $groom->father : old('groom_father') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_mother" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mother Name</label>
-                                <input type="text" name="groom_mother" id="groom_mother" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="groom_mother" id="groom_mother" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($groom->mother) ? $groom->mother : old('groom_mother') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_instagram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
-                                <input type="text" name="groom_instagram" id="groom_instagram" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="groom_instagram" id="groom_instagram" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($groom->instagram) ? $groom->instagram : old('groom_instagram') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_facebook" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
-                                <input type="text" name="groom_facebook" id="groom_facebook" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="groom_facebook" id="groom_facebook" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($groom->facebook) ? $groom->facebook : old('groom_facebook') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="groom_twitter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Twitter</label>
-                                <input type="text" name="groom_twitter" id="groom_twitter" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="groom_twitter" id="groom_twitter" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($groom->twitter) ? $groom->twitter : old('groom_twitter') }}">
                             </div>
                         </div>
 
@@ -222,58 +260,62 @@
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_fullname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fullname</label>
-                                <input type="text" name="bride_fullname" id="bride_fullname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Title" required="">
+                                <input type="text" name="bride_fullname" id="bride_fullname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Title" required="" value="{{ isset($bride->name) ? $bride->name : old('bride_fullname') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_nickname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nickname</label>
-                                <input type="text" name="bride_nickname" id="bride_nickname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required="">
+                                <input type="text" name="bride_nickname" id="bride_nickname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required="" value="{{ isset($bride->nickname) ? $bride->nickname : old('bride_nickname') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_photo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo</label>
                                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="bride_photo" type="file">
+                                {!! isset($bride->photo) ? '<img src="'.asset($bride->photo).'" class="h-52">' : '' !!}
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                <textarea name="bride_address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event quotes here"></textarea>
+                                <textarea name="bride_address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event quotes here">{{ ($bride->address) ? $bride->address : old('bride_address') }}</textarea>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_child" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Child</label>
-                                <input type="text" name="bride_child" id="bride_child" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="bride_child" id="bride_child" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($bride->child) ? $bride->child : old('bride_child') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_father" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father Name</label>
-                                <input type="text" name="bride_father" id="bride_father" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="bride_father" id="bride_father" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($bride->father) ? $bride->father : old('bride_father') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_mother" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mother Name</label>
-                                <input type="text" name="bride_mother" id="bride_mother" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="bride_mother" id="bride_mother" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($bride->mother) ? $bride->mother : old('bride_mother') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_instagram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
-                                <input type="text" name="bride_instagram" id="bride_instagram" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="bride_instagram" id="bride_instagram" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($bride->instagram) ? $bride->instagram : old('bride_instagram') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_facebook" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
-                                <input type="text" name="bride_facebook" id="bride_facebook" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="bride_facebook" id="bride_facebook" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($bride->facebook) ? $bride->facebook : old('bride_facebook') }}">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="bride_twitter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Twitter</label>
-                                <input type="text" name="bride_twitter" id="bride_twitter" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="">
+                                <input type="text" name="bride_twitter" id="bride_twitter" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="React Developer" required="" value="{{ isset($bride->twitter) ? $bride->twitter : old('bride_twitter') }}">
                             </div>
                         </div>
 
                         <div class="col-span-6 sm:col-full text-right">
-                            <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Back'" :btnIcon="'back'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'cover_image', 'data-action' => 'back', 'data-form' => 'form_groom_bride']"> </x-button>
+                            <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Back'" :btnIcon="'back'" :btnStyle="'light'" :btnAttrs="['data-target' => isset($event->id) ? route('gallery.edit',[$event->id]) : '', 'data-action' => 'href', 'data-form' => 'form_groom_bride']"> </x-button>
                             <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Next'" :btnIcon="'next'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'events', 'data-action' => 'next', 'data-form' => 'form_groom_bride']"> </x-button>
                         </div>
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="events">
+            @if( $content_active == 'events' )
+            <div class="col-span-2 step-content {{ $content_active == 'events' ? '' : 'hidden' }}" id="events">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
-                    <form id="form_events">
+                    <form id="form_events" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="grid grid-cols-1 xl:grid-cols-4 xl:gap-1 dark:bg-gray-900">
                             <div class="col-span-1">
                                 <div class="relative items-center justify-center w-full">
@@ -315,18 +357,19 @@
                             </div>
 
                             <div class="col-span-6 sm:col-full text-right">
-                                <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Back'" :btnIcon="'back'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'groom_bride', 'data-action' => 'back', 'data-form' => 'form_events']"> </x-button>
+                                <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Back'" :btnIcon="'back'" :btnStyle="'light'" :btnAttrs="['data-target' => isset($event->id) ? route('couple.edit',[$event->id]) : '', 'data-action' => 'href', 'data-form' => 'form_events']"> </x-button>
                                 <x-button :btnType="'button'" :btnClass="'btn-step'" :btnName="'Next'" :btnIcon="'next'" :btnStyle="'dark'" :btnAttrs="['data-target' => 'gallery', 'data-action' => 'next', 'data-form' => 'form_events']"> </x-button>
                             </div>
-
                         </div>
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="gallery">
+            @if( $content_active == 'gallery' )
+            <div class="col-span-2 step-content {{ $content_active == 'gallery' ? '' : 'hidden' }}" id="gallery">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
-                    <form id="form_gallery">
+                    <form id="form_gallery" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-4 xl:grid-cols-4 xl:gap-1 dark:bg-gray-900 tab-gallery">
                             <div class="col-span-1">
@@ -350,8 +393,10 @@
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="love_story">
+            @if( $content_active == 'love_story' )
+            <div class="col-span-2 step-content {{ $content_active == 'love_story' ? '' : 'hidden' }}" id="love_story">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
                     <form id="form_love_story">
                         @csrf
@@ -404,8 +449,10 @@
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="gifts">
+            @if( $content_active == 'gifts' )
+            <div class="col-span-2 step-content {{ $content_active == 'gifts' ? '' : 'hidden' }}" id="gifts">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
                     <form id="form_gifts">
                         @csrf
@@ -458,8 +505,10 @@
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="invites">
+            @if( $content_active == 'invites' )
+            <div class="col-span-2 step-content {{ $content_active == 'invites' ? '' : 'hidden' }}" id="invites">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
                     <form id="form_invites">
                         @csrf
@@ -512,8 +561,10 @@
                     </form>
                 </div>
             </div>
+            @endif
 
-            <div class="col-span-2 step-content hidden" id="confirmation">
+            @if( $content_active == 'confirmation' )
+            <div class="col-span-2 step-content {{ $content_active == 'confirmation' ? '' : 'hidden' }}" id="confirmation">
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4">
                     <form id="form_confirmation">
                         @csrf
@@ -526,6 +577,7 @@
                     </form>
                 </div>
             </div>
+            @endif
 
         </div>
 

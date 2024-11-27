@@ -22,10 +22,12 @@ class LoveStoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'fk_event' => 'required',
+            'title' => 'required',
             'description' => 'required',
-            'image' => 'required_without:id|max:10000|mimes:png,jpg,jpeg,webp',
-            'name' => 'required',
+            'path' => 'required_without:id|max:10000|mimes:png,jpg,jpeg,webp',
+            'date' => 'required',
+            'position' => 'required',
         ];
     }
 }

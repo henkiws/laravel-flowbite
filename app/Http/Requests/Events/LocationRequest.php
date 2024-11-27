@@ -22,10 +22,15 @@ class LocationRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'fk_event' => 'required',
             'name' => 'required',
-            'description' => 'required',
-            'image' => 'required_without:id|max:10000|mimes:png,jpg,jpeg,webp',
-            'name' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+            'location' => 'required',
+            'address' => 'required',
+            'maps' => 'required',
+            'map_embed' => 'required',
+            'is_live' => 'required',
         ];
     }
 }

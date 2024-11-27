@@ -19,7 +19,11 @@
                     </td>
                 @elseif( $el == "action" )
                     <td class="flex items-center px-6 py-4">
+                        @if( isset($tableActionEdit) && $tableActionEdit == "href" )
+                        <x-button :btnType="'button'" :btnClass="'btn-edit href'" :btnIcon="'edit'" :btnStyle="'light'" :btnAttrs="['data-id' => $row->id, 'data-action' => route($tableAction.'.edit',[$row->id])]"> </x-button>
+                        @else
                         <x-button btnOpenModal="{{ $tableModalId }}" :btnType="'button'" :btnClass="'btn-edit'" :btnIcon="'edit'" :btnStyle="'light'" :btnAttrs="['data-id' => $row->id, 'data-action' => route($tableAction.'.show',[$row->id])]"> </x-button>
+                        @endif
                         <x-button btnOpenModal="{{ $tableModalId }}Confirmation" :btnType="'button'" :btnClass="'btn-delete-confirmation'" :btnIcon="'delete'" :btnStyle="'light'" :btnAttrs="['data-id' => $row->id, 'data-action' => route($tableAction.'.destroy',[$row->id])]"> </x-button>
                     </td>
                 @else

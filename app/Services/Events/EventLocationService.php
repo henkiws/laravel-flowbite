@@ -5,7 +5,7 @@ namespace App\Services\Events;
 use App\Models\Event;
 use App\Traits\FileUploadTrait;
 
-class EventLocation {
+class EventLocationService {
 
     use FileUploadTrait;
 

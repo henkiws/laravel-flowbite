@@ -10,6 +10,12 @@ use App\Http\Controllers\Master\MusicController;
 use App\Http\Controllers\Master\TemplateController;
 use App\Http\Controllers\Master\TypeController;
 use App\Http\Controllers\Events\EventController;
+use App\Http\Controllers\Events\EventCoupleController;
+use App\Http\Controllers\Events\EventGalleryController;
+use App\Http\Controllers\Events\EventGiftsController;
+use App\Http\Controllers\Events\EventInvitesController;
+use App\Http\Controllers\Events\EventLocationController;
+use App\Http\Controllers\Events\EventLoveStoryController;
 
 Route::redirect('/', 'login');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -19,12 +25,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // events
         Route::resource('/events', EventController::class);
         Route::prefix('events')->group(function () { 
-            Route::resource('/couple', EventController::class);
-            Route::resource('/gallery', EventController::class);
-            Route::resource('/gifts', EventController::class);
-            Route::resource('/invites', EventController::class);
-            Route::resource('/location', EventController::class);
-            Route::resource('/lovestory', EventController::class);
+            Route::resource('/gallery', EventGalleryController::class);
+            Route::resource('/couple', EventCoupleController::class);
+            Route::resource('/gifts', EventGiftsController::class);
+            Route::resource('/invites', EventInvitesController::class);
+            Route::resource('/location', EventLocationController::class);
+            Route::resource('/lovestory', EventLoveStoryController::class);
         });
     
         // users

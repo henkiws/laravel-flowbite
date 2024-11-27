@@ -1,8 +1,8 @@
 <x-app-layout>
 
     <div class="flex justify-between mb-3">
-        <h5 class="text-xl font-bold dark:text-white">Event</h5>
-        <x-breadcrumbs :bcLinks="[]" bcActive='Event'></x-breadcrumbs>
+        <h5 class="text-xl font-bold dark:text-white">Events</h5>
+        <x-breadcrumbs :bcLinks="[]" bcActive='Events'></x-breadcrumbs>
     </div>
 
     <div class="w-full p-4 text-center bg-white border border-gray-100 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -11,7 +11,7 @@
             <x-button :btnType="'button'" :btnClass="'btn-href'" :btnName="'Add New Event'" :btnIcon="'add'" :btnStyle="'dark'" :btnAttrs="['data-action' => route('events.create')]"> </x-button>
         </div>
 
-        <x-table :tableHeader="[ 'No', 'Title', 'Name', 'Event Date', 'Group', 'Template', 'Type', 'Demo', 'Date Creation', 'Action' ]" :tableData="$events" :tableElement="['no','title','name','image','event_date','fk_event_group','fk_template','is_demo','created_at','action']" :tableAction="'events'" tableModalId="modalEvent"></x-table>
+        <x-table :tableHeader="[ 'No', 'Title', 'Name', 'Event Date', 'Group', 'Template', 'Type', 'Demo', 'Date Creation', 'Action' ]" :tableData="$events" :tableElement="['no','title','name','image','event_date','fk_event_group','fk_template','is_demo','created_at','action']" :tableAction="'events'" tableModalId="modalEvent" tableActionEdit="href"></x-table>
 
     </div>
 

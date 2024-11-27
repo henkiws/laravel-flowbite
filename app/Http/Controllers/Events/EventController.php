@@ -45,6 +45,8 @@ class EventController extends Controller
             "form_event_type" => $this->typeService->formList('fk_event_group',1),
             "form_event_template" => $this->templateService->formList('fk_template',1),
             "form_event_music" => $this->musicService->formList('fk_music'),
+            "tab_active" => ['general_info'],
+            "content_active" => 'general_info'
         ];
         return view('pages/events/form',$data);
     }
@@ -98,7 +100,7 @@ class EventController extends Controller
                             $request->show_prokes??0                        
                         );
     
-            return redirect()->route('events.edit',[$result->id])->with('success','Event #' . $result->title . ' updated successfully');
+            return redirect()->route('gallery.edit',[$result->id])->with('success','Event #' . $result->title . ' updated successfully');
         }catch( \Exception $e) {
             return redirect()->route('events.index')->withErrors(['msg' => $e->getMessage()]);
         }

@@ -22,10 +22,10 @@ class InvitesRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'fk_event' => 'required',
+            'fk_event_couple' => 'required',
             'name' => 'required',
-            'description' => 'required',
-            'image' => 'required_without:id|max:10000|mimes:png,jpg,jpeg,webp',
-            'name' => 'required',
+            'address' => 'required',
         ];
     }
 }

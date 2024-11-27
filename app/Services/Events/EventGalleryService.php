@@ -2,41 +2,46 @@
 
 namespace App\Services\Events;
 
-use App\Models\Event;
+use App\Models\EventGallery;
 use App\Traits\FileUploadTrait;
 
-class EventGallery {
+class EventGalleryService {
 
     use FileUploadTrait;
 
     public function paginate($paginate = 10)
     {   
-        return Event::paginate($paginate);
+        return EventGallery::paginate($paginate);
     }
 
 
     public function fetchById($id)
     {   
-        return Event::select('id','name','title','slug','initial_name','fk_event_group','fk_template',
-                    'fk_music','view_template','quotes','event_date','event_expired','is_demo','is_featured',
-                    'show_prokes','active','created_by')->find($id);
+        return EventGallery::select('id','fk_event','name','path','position','active','created_by')->find($id);
+    }
+
+    public function fetchByEvent($fk_event)
+    {   
+        return EventGallery::select('id','fk_event','name','path','position','active','created_by')->where('fk_event',$fk_event)->get();
     }
 
     public function create(
+        int $fk_event,
+        string $type,
         string $name,
-        string $description,
-        $image,
-        int $active
-        ): Event
+        $image
+        ): EventGallery
     {
         // upload file
-        $file = $this->uploadFile($image, 'banks');
+        $file = $this->uploadFile($image, 'events/'.$fk_event);
 
-        $result = Event::create([
+        $result = EventGallery::create([
+            'fk_event' => $fk_event,
+            'type' => $type,
             'name' => $name,
-            'description' => $description,
-            'image' => $file['path']??'',
-            'active' => $active,
+            'path' => $file['path']??'',
+            'active' => 1,
+            'position' => $this->eventGalleryLastPosition($fk_event),
             'created_by' => auth()->user()->id
         ]);
         return $result;
@@ -48,14 +53,14 @@ class EventGallery {
         string $description,
         $image,
         int $active
-        ): Event
+        ): EventGallery
     {
         // upload file
         if( isset($image) ) {
             $file = $this->uploadFile($image, 'banks');
         }
 
-        $result = Event::where('id',$id)->first();
+        $result = EventGallery::where('id',$id)->first();
         $data = [
             'name' => $name,
             'description' => $description,
@@ -74,13 +79,13 @@ class EventGallery {
         int $id
         ): int
     {
-        $result = Event::where('id',$id)->delete();
+        $result = EventGallery::where('id',$id)->delete();
         return 1;
     }
 
     public function formList($name, $select2 = 0): string 
     {
-        $roles = Event::select('id','name')->get();
+        $roles = EventGallery::select('id','name')->get();
         $options = '';
         foreach( $roles as $key => $val ) {
             $options .= '<option value="'.$val->name.'" class="py-1 inline-block font-Inter font-normal text-sm text-slate-600">'.$val->name.'</option>';
@@ -88,6 +93,10 @@ class EventGallery {
         $form = '<select name="'.$name.'" id="'.$name.'" class="form-control '.($select2?'select2':'').' bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">'.$options.'</select>';
 
         return $form;
+    }
+
+    public function eventGalleryLastPosition($fk_event) {
+        return EventGallery::where('fk_event',$fk_event)->count()+1;
     }
 
 }
